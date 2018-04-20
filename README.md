@@ -8,8 +8,8 @@ Example:
 {
     "id":1379,
     "roasts": [
-                  "Bob is dumb",
-                  "Bob is a stupid name"
-              ]
+        "Bob is dumb",
+        "Bob is a stupid name"
+    ]
 }
 ```
