@@ -17,10 +17,10 @@ def on_intent(request, session):
     intent = request['intent']
     intent_name = request['intent']['name']
 
-    if 'dialogState' in request:
+    #if 'dialogState' in request:
         # Delegate to Alexa until dialog sequence is complete
-        if request['dialogState'] == "STARTED" or request['dialogState'] == "IN_PROGRESS":
-            return dialog_response("", False)
+    #    if request['dialogState'] == "STARTED" or request['dialogState'] == "IN_PROGRESS":
+    #        return dialog_response("", False)
             
     # Process the user intents
     if intent_name == "RoastIntent":
@@ -40,9 +40,14 @@ def on_intent(request, session):
 def roast_brother(request):
     attributes = {}
 
-    brother = request['intent']['slots']['brother']
+    brother = request['intent']['slots']['brother']['resolutions']['resolutionsPerAuthority'][0]['values'][0]['value']['name']
 
-    return response(attributes, response_plain_text(brother, True))
+    with open("brothers.json", 'r') as jsonfile:
+        brothers = json.load(jsonfile)
+
+    roast = brothers[brother]['roasts'][0]
+
+    return response(attributes, response_plain_text(roast, True))
 
 
 #---------------------------------------------------------------------------------------------------
