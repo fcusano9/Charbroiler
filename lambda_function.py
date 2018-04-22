@@ -1,5 +1,6 @@
 
 import json
+import random
 
 # Application entry point
 def lambda_handler(event, context):
@@ -40,13 +41,22 @@ def on_intent(request, session):
 def roast_brother(request):
     attributes = {}
 
+    # Get the name of the requested brother
     brother = request['intent']['slots']['brother']['resolutions']['resolutionsPerAuthority'][0]['values'][0]['value']['name']
 
     with open("brothers.json", 'r') as jsonfile:
         brothers = json.load(jsonfile)
 
-    roast = brothers[brother]['roasts'][0]
+    # Get the list of roasts for the requested brother
+    roasts = brothers[brother]['roasts']
 
+    # If there are no roasts return a message
+    if len(roasts) == 0:
+        return response(attributes, response_plain_text("There are no roasts for this brother yet, please submit suggestions to Frank.", True))
+
+    # Choose a random roast that Alexa will respond with
+    roast = random.choice(roasts)
+    
     return response(attributes, response_plain_text(roast, True))
 
 
