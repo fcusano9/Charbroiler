@@ -55,9 +55,9 @@ def roast_brother(request):
         return response(attributes, response_plain_text("There are no roasts for this brother yet, please submit suggestions to Frank.", True))
 
     # Choose a random roast that Alexa will respond with
-    roast = random.choice(roasts)
+    roast = "<speak>" + random.choice(roasts) + "</speak>"
     
-    return response(attributes, response_plain_text(roast, True))
+    return response(attributes, response_ssml(roast, True))
 
 
 #---------------------------------------------------------------------------------------------------

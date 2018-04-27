@@ -14,7 +14,9 @@
     "Robert Lohr":
     {
         "id":1372,
-        "roasts": []
+        "roasts": [
+            "Shut up Lohr!"
+        ]
     },
     "Ryan DeSantis":
     {
@@ -41,7 +43,9 @@
     "Nick Bowman":
     {
         "id":1385,
-        "roasts": []
+        "roasts": [
+            "<amazon:effect name=\"whispered\">Please be quite, Nick is probably still sleeping.</amazon:effect>"
+        ]
     },
     "Jesse Greaves":
     {
@@ -194,6 +198,8 @@
     "Gabe Vande Hei":
     {
         "id":1,
-        "roasts": []
+        "roasts": [
+            "Fuck you Gabe, you tyranical ruler of the list. Let the boys play!"
+        ]
     }
 }
